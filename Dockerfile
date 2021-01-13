@@ -1,6 +1,6 @@
 FROM centos:7 as builder
 
-ARG NINJA_VERSION=1.10.1
+ARG NINJA_VERSION=1.10.2
 
 # install build dependencies
 RUN yum -y install gcc-c++ make
