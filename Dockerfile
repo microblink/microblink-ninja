@@ -1,9 +1,9 @@
-FROM centos:7 as builder
+FROM --platform=$BUILDPLATFORM amazonlinux:2 as builder
 
 ARG NINJA_VERSION=1.10.2
 
 # install build dependencies
-RUN yum -y install gcc-c++ make
+RUN yum -y install gcc-c++ make tar gzip
 
 # build Python from source
 RUN pushd /home && \
@@ -13,5 +13,5 @@ RUN pushd /home && \
     pushd build && \
     ../ninja-${NINJA_VERSION}/configure.py --bootstrap
 
-FROM centos:7
+FROM --platform=$BUILDPLATFORM amazonlinux:2
 COPY --from=builder /home/build/ninja /usr/local/bin/
