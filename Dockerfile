@@ -1,5 +1,6 @@
-FROM --platform=$BUILDPLATFORM amazonlinux:2 as builder
+FROM amazonlinux:2 as builder
 
+ARG BUILDPLATFORM
 ARG NINJA_VERSION=1.10.2
 
 # install build dependencies
