@@ -1,7 +1,7 @@
 FROM amazonlinux:2 as builder
 
 ARG BUILDPLATFORM
-ARG NINJA_VERSION=1.11.0
+ARG NINJA_VERSION=1.11.1
 
 # install build dependencies
 RUN yum -y install gcc-c++ make tar gzip
