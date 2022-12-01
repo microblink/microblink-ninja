@@ -4,7 +4,7 @@ ARG BUILDPLATFORM
 ARG NINJA_VERSION=1.11.1
 
 # install build dependencies
-RUN yum -y install gcc-c++ make tar gzip
+RUN yum -y install gcc-c++ make tar gzip python
 
 # build Python from source
 RUN pushd /home && \
