@@ -1,4 +1,4 @@
-FROM amazonlinux:2 as builder
+FROM amazonlinux:2022 as builder
 
 ARG BUILDPLATFORM
 ARG NINJA_VERSION=1.11.1
@@ -14,5 +14,5 @@ RUN pushd /home && \
     pushd build && \
     ../ninja-${NINJA_VERSION}/configure.py --bootstrap
 
-FROM --platform=$BUILDPLATFORM amazonlinux:2
+FROM --platform=$BUILDPLATFORM amazonlinux:2022
 COPY --from=builder /home/build/ninja /usr/local/bin/
