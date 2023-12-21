@@ -1,2 +1,4 @@
-# centos-ninja
-Latest ninja on Centos 7
+# microblink-ninja
+
+Latest ninja for purposes of Microblink docker builds.
+

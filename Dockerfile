@@ -1,10 +1,11 @@
-FROM amazonlinux:2022 as builder
+FROM phusion/baseimage:jammy-1.0.1 AS builder
 
 ARG BUILDPLATFORM
 ARG NINJA_VERSION=1.11.1
 
 # install build dependencies
-RUN yum -y install gcc-c++ make tar gzip python
+RUN apt update && \
+    apt install -y g++ make
 
 # build Python from source
 RUN pushd /home && \
@@ -14,5 +15,5 @@ RUN pushd /home && \
     pushd build && \
     ../ninja-${NINJA_VERSION}/configure.py --bootstrap
 
-FROM --platform=$BUILDPLATFORM amazonlinux:2022
+FROM --platform=$BUILDPLATFORM phusion/baseimage:jammy-1.0.1
 COPY --from=builder /home/build/ninja /usr/local/bin/
