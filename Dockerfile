@@ -1,7 +1,7 @@
-FROM phusion/baseimage:jammy-1.0.1 AS builder
+FROM phusion/baseimage:noble-1.0.0 AS builder
 
 ARG BUILDPLATFORM
-ARG NINJA_VERSION=1.11.1
+ARG NINJA_VERSION=1.12.1
 
 # install build dependencies
 RUN apt update && \
@@ -18,5 +18,5 @@ RUN cd /home && \
     cd build && \
     ../ninja-${NINJA_VERSION}/configure.py --bootstrap
 
-FROM --platform=$BUILDPLATFORM phusion/baseimage:jammy-1.0.1
+FROM --platform=$BUILDPLATFORM phusion/baseimage:noble-1.0.0
 COPY --from=builder /home/build/ninja /usr/local/bin/
